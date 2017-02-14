@@ -9,7 +9,17 @@ footer {
     margin-top:10px;
 }
 
+#border {
+  border: 2px solid;
+  border-radius: 5px;
 
+}
+.alert-success  {
+  text-align: center;
+}
+h1  {
+  text-align: center;
+}
 label, legend {
     display:block;
     margin-top:20px;
@@ -18,8 +28,4 @@ label, legend {
 
 input, textarea, select {
     display:block;
-}
-
-input[type='checkbox'], input[type='radio'] {
-    display:inline;
 }

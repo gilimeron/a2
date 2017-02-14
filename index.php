@@ -13,42 +13,67 @@
  </head>
 
  <body>
-  <h1>Bill Splitter</h1>
 
-  <form method='POST' action='index.php'>
 
-      <label for='billSum'>Split how many ways?</label>
+  <div class="container" id='border'>
 
-      <input type='text' name='pplCount' value='<?php if(isset($_POST['pplCount'])) echo $_POST['pplCount'] ?>' required>
-* Required
-      <br>
-      <label for='pplCount'>How much was the tab?</label>
-      <input type='text' name='billSum' value='<?php if(isset($_POST['billSum'])) echo $_POST['billSum'] ?>' required>
-      * Required
-      <br>
+    <h1>Bill Splitter</h1>
 
-        <label for='serviceScore'>How was the service?</label>
-		    <select name='serviceScore' id='serviceScore'>
-            <option value='choose'> Please choose </option>
-            <option value='bad' <?php if(isset($_POST['serviceScore']) && $_POST['serviceScore'] == 'bad') echo 'selected'?>>Bad</option>
-            <option value='average' <?php if(isset($_POST['serviceScore']) && $_POST['serviceScore'] == 'average') echo 'selected'?>>Average</option>
-            <option value='good' <?php if(isset($_POST['serviceScore']) && $_POST['serviceScore'] == 'good') echo 'selected'?>>Good</option>
-            <option value='excellent' <?php if(isset($_POST['serviceScore']) && $_POST['serviceScore'] == 'excellent') echo 'selected'?>>Excellent</option>
-        </select>
+    <form method='GET' action='index.php' class="form-horizontal">
 
-        <fieldset class='checkboxes'>
+      <div class="form-group">
+        <label for='pplCount' class="control-label col-sm-2">Split how many ways?</label>
+        <div class="col-sm-10">
+          <input type='text' name='pplCount' class='form-control' value='<?php if(isset($_GET['pplCount'])) echo $_GET['pplCount'] ?>' required>
+        * Required
+        </div>
+       </div>
 
-          <label>Round up? <input type='checkbox' name='roundUp' value='roundUp' <?php if(isset($_POST['roundUp'])) echo 'CHECKED'?>> </label> Yes
-        </fieldset>
+      <div class="form-group">
+        <label for='billSum' class="control-label col-sm-2">How much was the tab?</label>
+        <div class="col-sm-10">
+          <input type='text' name='billSum' class='form-control' value='<?php if(isset($_GET['billSum'])) echo $_GET['billSum'] ?>' required>
+          * Required
+        </div>
+       </div/>
 
-    <input type='submit' value='Calculate'>
+      <div class="form-group">
+        <label for='serviceScore' class="control-label col-sm-2">How was the service?</label>
+        <div class='col-sm-10'>
+      	   <select name='serviceScore' id='serviceScore' class='form-control'>
+              <option value='choose'> Please choose </option>
+              <option value='bad' <?php if(isset($_GET['serviceScore']) && $_GET['serviceScore'] == 'bad') echo 'selected'?>>Bad</option>
+              <option value='average' <?php if(isset($_GET['serviceScore']) && $_GET['serviceScore'] == 'average') echo 'selected'?>>Average</option>
+              <option value='good' <?php if(isset($_GET['serviceScore']) && $_GET['serviceScore'] == 'good') echo 'selected'?>>Good</option>
+              <option value='excellent' <?php if(isset($_GET['serviceScore']) && $_GET['serviceScore'] == 'excellent') echo 'selected'?>>Excellent</option>
+            </select>
+        </div>
+      </div>
 
-    <?php if($_POST): ?>
-    			<div class="alert" role="alert">
-    				Everyone has to pay $<?=$dividedBill?>
-    			</div>
-		<?php endif; ?>
+      <div class="form-group">
+          <!-- <div class='checkbox'> -->
+            <label for='roundUp' class="control-label col-sm-2">Round up?</label>
+              <!-- <div class="col-sm-10"> -->
+                <input type='checkbox' name='roundUp' value='Yes' <?php if(isset($_GET['roundUp'])) echo 'CHECKED'?>>  Yes
+              <!-- </div> -->
+          <!-- </div> -->
 
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type='submit' value='Calculate' class="btn btn-default">
+        </div>
+      </div>
+
+      <?php if($_GET): ?>
+        <div class="alert alert-success" role="alert">
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+      	   Everyone ows $<?=$dividedBill?>
+      	</div>
+  		<?php endif; ?>
+
+    <!-- </div> -->
   </form>
+  </div>
  </body>
 </html>

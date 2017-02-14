@@ -1,13 +1,13 @@
 <?php
-require('../tools.php');
+require('tools.php');
 
-if($_POST) {
-    $_POST = sanitize($_POST);
+if($_GET) {
+    $_GET = sanitize($_GET);
 
 
-$dividedBill = $_POST['billSum']/$_POST['pplCount'];
+$dividedBill = $_GET['billSum']/$_GET['pplCount'];
 
-if(isset($_POST['roundUp'])) {
+if(isset($_GET['roundUp'])) {
      $dividedBill = ceil($dividedBill);
 }
 
