@@ -20,12 +20,16 @@ footer {
 h1  {
   text-align: center;
 }
-label, legend {
+label, legend, .form-horizontal .control-label {
     display:block;
-    margin-top:20px;
-    margin-bottom:0;
+    padding-top: 0px;
 }
 
 input, textarea, select {
     display:block;
+}
+
+input[type="checkbox"] {
+  display: inline-block;
+  margin-left: 15px;
 }

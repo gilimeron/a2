@@ -47,12 +47,8 @@
                 </div>
 
                 <div class="form-group">
-                    <!-- <div class='checkbox'> -->
                       <label for='roundUp' class="control-label col-sm-2">Round up? </label>
-                        <!-- <div class="col-sm-10"> -->
                       <input type='checkbox' name='roundUp' value='Yes' <?php if(isset($_GET['roundUp'])) echo 'CHECKED'?>>  Yes
-                        <!-- </div> -->
-                    <!-- </div> -->
                 </div>
 
                 <div class="form-group">
@@ -70,14 +66,14 @@
                              <?php endforeach; ?>
                          </ul>
                      </div>
-                 <?php else: ?>
+                <?php endif; ?>
+                
+                <?php if($dividedBill): ?>
                     <div class="alert alert-success" role="alert">
                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                 	      everyone owes $<?=$dividedBill?>
                 	  </div>
             		<?php endif; ?>
-
-          <!-- </div> -->
 
         </div>
     </body>
