@@ -22,14 +22,14 @@
                 <div class="form-group">
                     <label for='pplCount' class="control-label col-sm-2">Split how many ways?</label>
                     <div class="col-sm-10">
-                        <input type='number' name='pplCount' class='form-control' value='<?php if(isset($_GET['pplCount'])) echo $_GET['pplCount'] ?>'>
+                        <input type='number' name='pplCount' id='pplCount' class='form-control' value='<?php if(isset($_GET['pplCount'])) echo $_GET['pplCount'] ?>'>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for='billSum' class="control-label col-sm-2">How much was the tab?</label>
                     <div class="col-sm-10">
-                        <input type='text' name='billSum' class='form-control' value='<?php if(isset($_GET['billSum'])) echo $_GET['billSum'] ?>'>
+                        <input type='text' name='billSum' id='billSum' class='form-control' value='<?php if(isset($_GET['billSum'])) echo $_GET['billSum'] ?>'>
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@
 
                 <div class="form-group">
                       <label for='roundUp' class="control-label col-sm-2">Round up? </label>
-                      <input type='checkbox' name='roundUp' value='Yes' <?php if(isset($_GET['roundUp'])) echo 'CHECKED'?>>  Yes
+                      <input type='checkbox' name='roundUp' id='roundUp' value='Yes' <?php if(isset($_GET['roundUp'])) echo 'CHECKED'?>>  Yes
                 </div>
 
                 <div class="form-group">
@@ -67,7 +67,7 @@
                          </ul>
                      </div>
                 <?php endif; ?>
-                
+
                 <?php if($dividedBill): ?>
                     <div class="alert alert-success" role="alert">
                         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
