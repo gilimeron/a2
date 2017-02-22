@@ -16,7 +16,7 @@ if($form->isSubmitted()) {
     $errors = $form->validate(
         [
             'pplCount' => 'required|integer|min:1',
-            'billSum' => 'required|numeric|min:1',
+            'billSum' => 'required|numeric',
         ]
     );
 

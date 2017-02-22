@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label for='billSum' class="control-label col-sm-2">How much was the tab?</label>
                     <div class="col-sm-10">
-                        <input type='text' name='billSum' id='billSum' class='form-control' value='<?php if(isset($_GET['billSum'])) echo $_GET['billSum'] ?>'>
+                        <input type='number' step='any' name='billSum' id='billSum' class='form-control' value='<?php if(isset($_GET['billSum'])) echo $_GET['billSum'] ?>'>
                     </div>
                 </div>
 
