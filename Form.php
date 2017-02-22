@@ -1,6 +1,6 @@
 <?php
 
-namespace DWA;
+namespace Bill;
 
 class Form {
 
@@ -46,29 +46,6 @@ class Form {
         $value = isset($this->request[$name]) ? true : false;
 
         return $value;
-    }
-
-
-    /**
-	* Use in display files to prefill the values of fields if those values are in the request
-    * Second optional parameter lets you set a default value if value does not exist
-    *
-    * Example usage:
-    *   <input type='text' name='email' value='<?=$form->prefill($email, "example@gmail.com")?>'>
-	*/
-    public function prefill($field, $default = '', $sanitize = true) {
-
-        if(isset($this->request[$field])) {
-            if($sanitize) {
-                return $this->sanitize($this->request[$field]);
-            }
-            else {
-                return $this->request[$field];
-            }
-        }
-        else {
-            return $default;
-        }
     }
 
 
@@ -154,13 +131,10 @@ class Form {
     private function getErrorMessage($rule, $parameter = null) {
 
         $language = [
-            'alphaNumeric' => ' can only contain letters or numbers.',
-            'alpha' => ' can only contain letters',
             'numeric' => ' can only contain numbers',
+            'integer' => ' can only contain whole numbers',
             'required' => ' is required.',
-            'email' => ' is not a valid email address.',
             'min' => ' has to be greater than '.$parameter,
-            'max' => ' has to be less than '.$parameter,
         ];
 
         # If a message for the rule was found, use that, otherwise default to " has an error"
@@ -174,28 +148,19 @@ class Form {
     ### VALIDATION METHODS FOUND BELOW HERE ###
 
     /**
-	* Returns boolean if given value contains only letters/numbers/spaces
-	*/
-    private function alphaNumeric($value) {
-        return ctype_alnum(str_replace(' ','', $value));
-    }
-
-
-    /**
-	* Returns boolean if given value contains only letters/spaces
-	*/
-    private function alpha($value) {
-        return ctype_alpha(str_replace(' ','', $value));
-    }
-
-
-    /**
-	* Returns boolean if given value contains only numbers
+	* Returns boolean if given value contains only numbers (either integers or floats)
 	*/
     private function numeric($value) {
         return ctype_digit(str_replace(' ','', $value)) || is_numeric(str_replace(' ','', $value));
     }
 
+    /**
+
+	* Returns boolean if given value contains only integers
+	*/
+    private function integer($value) {
+        return ctype_digit(str_replace(' ','', $value));
+    }
 
     /**
 	* Returns boolean if the given value is not blank
@@ -207,27 +172,10 @@ class Form {
 
 
     /**
-	* Returns boolean if the given value is a valid email address
-	*/
-    private function email($value) {
-        return filter_var($value, FILTER_VALIDATE_EMAIL);
-    }
-
-
-    /**
 	* Returns value if the given value is GREATER THAN (non-inclusive) the given parameter
 	*/
     private function min($value, $parameter) {
         return floatval($value) > floatval($parameter);
     }
-
-
-    /**
-	* Returns value if the given value is LESS THAN (non-inclusive) the given parameter
-	*/
-    private function max($value, $parameter) {
-        return floatval($value) < floatval($parameter);
-    }
-
 
 } # end of class

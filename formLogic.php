@@ -1,7 +1,7 @@
 <?php
 require('Form.php');
 
-$form = new DWA\Form($_GET);
+$form = new Bill\Form($_GET);
 
 $errors = [];
 
@@ -15,15 +15,15 @@ if($form->isSubmitted()) {
     # validation
     $errors = $form->validate(
         [
-            'pplCount' => 'required|numeric|min:1',
+            'pplCount' => 'required|integer|min:1',
             'billSum' => 'required|numeric|min:1',
         ]
     );
 
-
-        $dividedBill = $billSum/$pplCount;
-        if($roundUp) {
-             $dividedBill = ceil($dividedBill);
-        }
+    # calculation
+    $dividedBill = $billSum/$pplCount;
+    if($roundUp) {
+         $dividedBill = ceil($dividedBill);
+    }
 
 }

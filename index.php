@@ -58,22 +58,21 @@
                 </div>
             </form>
 
-                <?php if($errors): ?>
-                     <div class='alert alert-danger'>
-                         <ul>
-                             <?php foreach($errors as $error): ?>
-                                 <li><?=$error?></li>
-                             <?php endforeach; ?>
-                         </ul>
-                     </div>
-                <?php endif; ?>
+            <?php if($errors): ?>
+                <div class='alert alert-danger'>
+                    <ul>
+                        <?php foreach($errors as $error): ?>
+                            <li><?=$error?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
 
-                <?php if($dividedBill): ?>
-                    <div class="alert alert-success" role="alert">
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                	      everyone owes $<?=$dividedBill?>
-                	  </div>
-            		<?php endif; ?>
+            <?php elseif($dividedBill): ?>
+                  <div class="alert alert-success" role="alert">
+                      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    	everyone owes $<?=$dividedBill?>
+                  </div>
+            <?php endif; ?>
 
         </div>
     </body>
