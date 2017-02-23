@@ -16,14 +16,16 @@ if($form->isSubmitted()) {
     $errors = $form->validate(
         [
             'pplCount' => 'required|integer|min:1',
-            'billSum' => 'required|numeric',
+            'billSum' => 'required|numeric|min:0',
         ]
     );
 
     # calculation
-    $dividedBill = $billSum/$pplCount;
     if($roundUp) {
-         $dividedBill = ceil($dividedBill);
+        $dividedBill = ceil($billSum/$pplCount);
+    }
+    else {
+        $dividedBill = number_format(($billSum/$pplCount),2);
     }
 
 }
